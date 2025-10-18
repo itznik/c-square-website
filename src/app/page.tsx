@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Lenis from '@studio-freight/lenis';
-import { Leaf, ShieldCheck, Globe } from 'lucide-react'; // A great icon library
+import { Leaf, ShieldCheck, Globe } from 'lucide-react';
 
 export default function HomePage() {
 
@@ -67,10 +67,9 @@ export default function HomePage() {
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }} // A beautiful spring-like ease
+            transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="relative w-full h-96 flex items-center justify-center">
-              {/* This is where your custom SVG illustration will go */}
               <div className="absolute w-full h-full bg-brand-accent-cream rounded-full blur-2xl opacity-50"></div>
               <p className="z-10 text-brand-olive">[High-Quality SVG Illustration Placeholder]</p>
             </div>
