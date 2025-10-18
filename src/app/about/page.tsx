@@ -1,84 +1,74 @@
-import Link from 'next/link';
-
-// --- Placeholder Data for LinkedIn Posts ---
-// In a future step, this data will come from your Sanity.io CMS.
-const linkedInPosts = [
-  {
-    id: 1,
-    text: "We're excited to announce our new partnership! This collaboration will help us deliver even more value to our clients. #startup #partnership #growth",
-    url: "https://www.linkedin.com/", // Replace with actual post URL
-  },
-  {
-    id: 2,
-    text: "Just launched a major update to our platform. Our team has been working hard to bring you these new features. Check it out! #productlaunch #tech #innovation",
-    url: "https://www.linkedin.com/", // Replace with actual post URL
-  },
-  {
-    id: 3,
-    text: "A deep dive into the importance of SEO for modern businesses. Read our latest insights on the company blog. #SEO #digitalmarketing",
-    url: "https://www.linkedin.com/", // Replace with actual post URL
-  },
-];
-// -----------------------------------------
-
+import AnimatedSection from '@/components/AnimatedSection';
 
 export default function AboutPage() {
   return (
     <main>
       {/* Page Header */}
-      <section className="bg-gray-50 py-16 md:py-24">
+      <AnimatedSection className="py-20 md:py-28 bg-white">
         <div className="container mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-800">
-            Our Mission: To Empower Startups
+          <h1 className="text-4xl md:text-6xl font-extrabold text-brand-green">
+            A Purpose-Driven Mission
           </h1>
           <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
-            We are dedicated to providing the digital foundation that new businesses need to thrive in a competitive landscape.
+            We are dedicated to creating a transparent and accessible marketplace to accelerate global decarbonization.
           </p>
         </div>
-      </section>
+      </AnimatedSection>
 
-      {/* Mission & Vision Section */}
-      <section className="py-16 md:py-24 bg-white">
+      {/* Our Story Section */}
+      <AnimatedSection className="py-20 md:py-28">
         <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Vision</h2>
-            <p className="text-gray-600 mb-4">
-              To be the most trusted and sought-after web development partner for startups, known for our commitment to quality, performance, and client success. We envision a world where every great idea has a high-quality digital presence to support it.
-            </p>
+          {/* Illustration */}
+          <div className="flex justify-center">
+            <div className="bg-accent/30 w-80 h-80 rounded-full flex items-center justify-center">
+              <span className="text-brand-green">[Illustration Placeholder]</span>
+            </div>
           </div>
-          <div>
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Mission</h2>
-            <p className="text-gray-600">
-              Our mission is to build professional, trustworthy, and high-performing websites using the MERN stack. We focus on creating SEO-optimized, secure, and scalable solutions that generate leads and serve as a credible source of information for our clients and their partners.
+
+          {/* Text Content */}
+          <div className="text-center md:text-left">
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Story</h2>
+            <p className="text-gray-600 mb-4 leading-relaxed">
+              C² was founded on a simple yet powerful idea: that collective action is the key to tackling climate change. We saw a need for a platform that not only facilitates carbon credit transactions but also builds trust and transparency in the process.
+            </p>
+            <p className="text-gray-600 leading-relaxed">
+              Our mission is to connect environmentally conscious businesses with high-impact, verified sustainability projects, making a tangible difference one carbon credit at a time.
             </p>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
-      {/* LinkedIn Posts Section */}
-      <section className="bg-gray-50 py-16 md:py-24">
+      {/* Core Values Section */}
+      <AnimatedSection className="py-20 md:py-28 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Latest from LinkedIn</h2>
-            <p className="text-gray-600 mt-2">Follow our journey and get the latest insights.</p>
+            <h2 className="text-4xl font-extrabold text-brand-green">Our Core Values</h2>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {linkedInPosts.map((post) => (
-              <div key={post.id} className="bg-white p-6 border border-gray-200 rounded-lg shadow-sm flex flex-col justify-between">
-                <p className="text-gray-700 mb-4">{post.text}</p>
-                <Link 
-                  href={post.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-semibold text-blue-600 hover:underline self-start"
-                >
-                  Read on LinkedIn &rarr;
-                </Link>
-              </div>
-            ))}
+          <div className="grid md:grid-cols-3 gap-8 text-center">
+            {/* Value 1: Transparency */}
+            <div>
+              <h3 className="text-2xl font-bold text-text-dark mb-3">Transparency</h3>
+              <p className="text-gray-600">
+                We believe in complete clarity. Every transaction and project on our platform is tracked and verifiable.
+              </p>
+            </div>
+            {/* Value 2: Impact */}
+            <div>
+              <h3 className="text-2xl font-bold text-text-dark mb-3">Impact</h3>
+              <p className="text-gray-600">
+                We prioritize projects that deliver measurable environmental and social benefits.
+              </p>
+            </div>
+            {/* Value 3: Integrity */}
+            <div>
+              <h3 className="text-2xl font-bold text-text-dark mb-3">Integrity</h3>
+              <p className="text-gray-600">
+                We operate with the highest ethical standards to build a trustworthy ecosystem for climate action.
+              </p>
+            </div>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
     </main>
   );
 }
