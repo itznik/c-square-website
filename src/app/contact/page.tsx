@@ -1,27 +1,24 @@
-"use client"; // This page is interactive, so it must be a Client Component
+"use client";
 
 import { useState, FormEvent } from 'react';
 
-// Define a type for the form state for better type safety
 type FormState = {
   status: 'idle' | 'loading' | 'success' | 'error';
   message: string | null;
 };
 
 export default function ContactPage() {
-  // State for form inputs
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   
-  // State for form submission status
   const [formState, setFormState] = useState<FormState>({
     status: 'idle',
     message: null,
   });
 
   const handleSubmit = async (event: FormEvent) => {
-    event.preventDefault(); // Prevent the default form submission (page reload)
+    event.preventDefault();
     setFormState({ status: 'loading', message: null });
 
     try {
@@ -37,22 +34,16 @@ export default function ContactPage() {
         throw new Error('Something went wrong. Please try again.');
       }
 
-      // If successful
       setFormState({ status: 'success', message: 'Thank you! Your message has been sent.' });
       setName('');
       setEmail('');
       setMessage('');
 
-    // ... inside the handleSubmit function ...
-
-} catch (error) {
-  // If an error occurs
-  console.error(error); // <-- ADD THIS LINE
-  setFormState({ status: 'error', message: 'Failed to send message. Please try again later.' });
-}
-
-// ... rest of the function ...
-
+    } catch (error) {
+      console.error(error); // The line you added is correctly placed here
+      setFormState({ status: 'error', message: 'Failed to send message. Please try again later.' });
+    }
+  };
 
   return (
     <main>
@@ -128,7 +119,6 @@ export default function ContactPage() {
                 </button>
               </div>
             </form>
-            {/* Form Submission Status Message */}
             {formState.message && (
               <div className={`mt-4 text-center p-3 rounded-lg ${
                 formState.status === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
@@ -142,4 +132,3 @@ export default function ContactPage() {
     </main>
   );
 }
-
