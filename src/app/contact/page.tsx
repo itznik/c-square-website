@@ -43,11 +43,16 @@ export default function ContactPage() {
       setEmail('');
       setMessage('');
 
-    } catch (error) {
-      // If an error occurs
-      setFormState({ status: 'error', message: 'Failed to send message. Please try again later.' });
-    }
-  };
+    // ... inside the handleSubmit function ...
+
+} catch (error) {
+  // If an error occurs
+  console.error(error); // <-- ADD THIS LINE
+  setFormState({ status: 'error', message: 'Failed to send message. Please try again later.' });
+}
+
+// ... rest of the function ...
+
 
   return (
     <main>
@@ -137,3 +142,4 @@ export default function ContactPage() {
     </main>
   );
 }
+
