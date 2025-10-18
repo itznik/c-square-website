@@ -1,26 +1,25 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Define the new color palette */
+  --background-light: #F9F9F7; /* Off-white from your image */
+  --brand-green: #5E6D55;      /* Olive green from your image */
+  --text-dark: #333333;        /* A softer dark for text */
+  --text-light: #FFFFFF;
+  --accent: #A3B59A;           /* A lighter green for accents */
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background-light);
+  color: var(--text-dark);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Basic smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
 }
