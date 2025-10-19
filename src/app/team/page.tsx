@@ -2,12 +2,15 @@ import PageHeader from '@/components/ui/PageHeader';
 import TeamMemberCard from '@/components/TeamMemberCard';
 import { client, urlFor } from '@/lib/sanity.client';
 import { motion } from 'framer-motion';
+// ... (keep other imports)
+import type { SanityImageSource } from '@sanity/image-url/lib/types/types'; // <-- Import this type
 
+// ... (rest of the file remains the same)
 interface TeamMember {
   _id: string;
   name: string;
   role: string;
-  image: any;
+  image: SanityImageSource;
   linkedinUrl: string;
 }
 
@@ -61,3 +64,4 @@ export default async function TeamPage() {
     </main>
   );
 }
+
