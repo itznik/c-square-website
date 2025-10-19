@@ -1,11 +1,9 @@
 import PageHeader from '@/components/ui/PageHeader';
 import TeamMemberCard from '@/components/TeamMemberCard';
 import { client, urlFor } from '@/lib/sanity.client';
-import { motion } from 'framer-motion';
-// ... (keep other imports)
-import type { SanityImageSource } from '@sanity/image-url/lib/types/types'; // <-- Import this type
+import { motion, Variants } from 'framer-motion'; // <-- Import Variants
+import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
 
-// ... (rest of the file remains the same)
 interface TeamMember {
   _id: string;
   name: string;
@@ -19,12 +17,14 @@ const getTeamMembers = async (): Promise<TeamMember[]> => {
   return await client.fetch(query);
 };
 
-const containerVariants = {
+// Add the 'Variants' type here
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
 };
 
-const itemVariants = {
+// And add the 'Variants' type here
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } },
 };
@@ -64,4 +64,3 @@ export default async function TeamPage() {
     </main>
   );
 }
-
