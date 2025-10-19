@@ -1,31 +1,24 @@
-import { motion } from 'framer-motion';
 import PageHeader from '@/components/ui/PageHeader';
 import TeamMemberCard from '@/components/TeamMemberCard';
 import { client, urlFor } from '@/lib/sanity.client';
+import { motion } from 'framer-motion';
 
-// Define the type for our fetched data for perfect type safety
 interface TeamMember {
   _id: string;
   name: string;
   role: string;
-  image: any; // Sanity image asset
+  image: any;
   linkedinUrl: string;
 }
 
-// This is a GROQ query to fetch all documents of type "teamMember"
 const getTeamMembers = async (): Promise<TeamMember[]> => {
   const query = `*[_type == "teamMember"]`;
-  const data = await client.fetch(query);
-  return data;
+  return await client.fetch(query);
 };
 
-// Animation variants for the container and items
 const containerVariants = {
   hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.2 },
-  },
+  visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
 };
 
 const itemVariants = {
@@ -33,7 +26,6 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } },
 };
 
-// This is now an async Server Component
 export default async function TeamPage() {
   const teamMembers = await getTeamMembers();
 
@@ -44,7 +36,6 @@ export default async function TeamPage() {
         subtitle="A team driven by passion, expertise, and a shared vision for a sustainable future."
       />
 
-      {/* This section will now render dynamically based on CMS content */}
       <motion.section
         className="py-20 md:py-28"
         variants={containerVariants}
@@ -60,8 +51,7 @@ export default async function TeamPage() {
                 variants={itemVariants}
                 name={member.name}
                 role={member.role}
-                // Use the urlFor helper to get the correct image URL
-                imageUrl={urlFor(member.image).width(400).height(400).url()}
+                imageUrl={urlFor(member.image).width(400).height(500).url()}
                 linkedinUrl={member.linkedinUrl}
               />
             ))}
