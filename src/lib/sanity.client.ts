@@ -2,7 +2,7 @@ import { createClient } from 'next-sanity'
 import imageUrlBuilder from '@sanity/image-url'
 
 // IMPORTANT: Get these from your sanity.io project dashboard
-export const projectId = 'YOUR_PROJECT_ID';
+export const projectId = 'kwb9x7v7';
 export const dataset = 'production';
 const apiVersion = '2023-05-03';
 
