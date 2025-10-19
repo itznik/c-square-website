@@ -1,25 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+/* 1. Import Google Fonts (Lora for headings, Inter for body) */
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Inter:wght@400;600;800&display=swap');
 
+/* 2. Tailwind CSS Directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* 3. Define New, Richer Color Palette */
 :root {
-  /* Define the new color palette */
-  --background-light: #F9F9F7; /* Off-white from your image */
-  --brand-green: #5E6D55;      /* Olive green from your image */
-  --text-dark: #333333;        /* A softer dark for text */
+  --background-light: #F9F9F7;   /* Main off-white background */
+  --brand-olive: #5E6D55;         /* Primary buttons and accents */
+  --brand-deep-green: #38423B;    /* Main headings and dark text */
+  --brand-accent-light: #A3B59A;  /* Lighter highlights */
+  --brand-accent-cream: #EAE9E4;  /* Secondary backgrounds, cards */
+  --text-dark: #333333;           /* Standard body text */
   --text-light: #FFFFFF;
-  --accent: #A3B59A;           /* A lighter green for accents */
+}
+
+/* 4. Apply Base Styles */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background-color: var(--background-light);
   color: var(--text-dark);
-  font-family: 'Poppins', sans-serif;
-}
-
-/* Basic smooth scroll behavior */
-html {
-  scroll-behavior: smooth;
+  font-family: 'Inter', sans-serif; /* Set Inter as the default body font */
 }

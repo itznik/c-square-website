@@ -1,58 +1,55 @@
+import AnimatedSection from '@/components/AnimatedSection';
 import ServiceBlock from '@/components/ServiceBlock';
 import Link from 'next/link';
 
-// --- Placeholder Data for Services & Partners ---
+// Placeholder data
 const services = [
   {
     id: 1,
-    title: 'Custom Web Development',
-    description: 'We build bespoke, high-performance websites from the ground up using the MERN stack (MongoDB, Express.js, React, Node.js) tailored to your specific business needs.',
+    title: 'Carbon Credit Verification',
+    description: 'We provide rigorous verification for sustainability projects, ensuring they meet global standards for carbon offsetting.',
   },
   {
     id: 2,
-    title: 'SEO Strategy & Implementation',
-    description: 'Our websites are built with a strong SEO foundation, including server-side rendering (SSR) and best practices to help you achieve top rankings on Google.',
+    title: 'Marketplace Platform',
+    description: 'Our transparent platform connects businesses seeking to offset their carbon footprint with verified, high-impact projects.',
   },
   {
     id: 3,
-    title: 'UI/UX Design',
-    description: 'We create clean, modern, and intuitive user interfaces that build trust and enhance user engagement, ensuring a seamless experience on any device.',
+    title: 'Portfolio Management',
+    description: 'We help businesses build and manage a diverse portfolio of carbon credits that align with their sustainability goals.',
   },
   {
     id: 4,
-    title: 'Admin Panel & CMS Integration',
-    description: 'We provide easy-to-use admin panels that allow you to update your website content without needing to touch a single line of code.',
+    title: 'Advisory Services',
+    description: 'Our experts provide strategic guidance on carbon neutrality, helping you navigate the complexities of the carbon market.',
   },
 ];
 
 const partners = [
-  { id: 1, name: 'CloudNet Hosting', url: '#' },
-  { id: 2, name: 'SecurePay Gateways', url: '#' },
-  { id: 3, name: 'Innovate Solutions', url: '#' },
+  { id: 1, name: 'EcoVerify Standard', url: '#' },
+  { id: 2, name: 'Green Future Fund', url: '#' },
+  { id: 3, name: 'Sustain Ledger', url: '#' },
 ];
-// ---------------------------------------------
 
 export default function ServicesPage() {
   return (
     <main>
       {/* Page Header */}
-      <section className="bg-gray-50 py-16 md:py-24">
+      <AnimatedSection className="py-20 md:py-28 bg-white">
         <div className="container mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-800">
-            What We Offer
+          <h1 className="text-4xl md:text-6xl font-extrabold text-brand-green">
+            Our Services
           </h1>
           <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
-            Providing end-to-end solutions to establish your digital presence and drive growth.
+            End-to-end solutions for a transparent and effective carbon offsetting journey.
           </p>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* Services Grid */}
-      <section className="py-16 md:py-24 bg-white">
+      <AnimatedSection className="py-20 md:py-28">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Our Core Services</h2>
-          </div>
           <div className="grid md:grid-cols-2 gap-8">
             {services.map((service) => (
               <ServiceBlock
@@ -63,24 +60,26 @@ export default function ServicesPage() {
             ))}
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* Partners Section */}
-      <section className="bg-gray-50 py-16 md:py-24">
+      <AnimatedSection className="py-20 md:py-28 bg-white">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Our Trusted Partners</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-brand-green">
+            Our Trusted Partners
+          </h2>
           <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
-            We collaborate with industry leaders to deliver the best possible solutions for our clients.
+            We collaborate with industry leaders to ensure the integrity and impact of our marketplace.
           </p>
-          <div className="mt-8 flex flex-wrap justify-center items-center gap-x-12 gap-y-4">
+          <div className="mt-12 flex flex-wrap justify-center items-center gap-x-12 gap-y-6">
             {partners.map((partner) => (
-              <Link key={partner.id} href={partner.url} className="text-xl font-semibold text-gray-500 hover:text-blue-600 transition-colors">
+              <Link key={partner.id} href={partner.url} className="text-2xl font-semibold text-gray-500 hover:text-brand-green transition-colors">
                 {partner.name}
               </Link>
             ))}
           </div>
         </div>
-      </section>
+      </AnimatedSection>
     </main>
   );
 }
