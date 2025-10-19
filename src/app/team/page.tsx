@@ -1,7 +1,5 @@
-import PageHeader from '@/components/ui/PageHeader';
-import TeamMemberCard from '@/components/TeamMemberCard';
-import { client, urlFor } from '@/lib/sanity.client';
-import { motion, Variants } from 'framer-motion'; // <-- Import Variants
+import TeamPageClient from '@/components/TeamPageClient'; // Import the new client component
+import { client } from '@/lib/sanity.client';
 import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
 
 interface TeamMember {
@@ -12,55 +10,17 @@ interface TeamMember {
   linkedinUrl: string;
 }
 
+// This function still runs on the server to fetch data
 const getTeamMembers = async (): Promise<TeamMember[]> => {
   const query = `*[_type == "teamMember"]`;
   return await client.fetch(query);
 };
 
-// Add the 'Variants' type here
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
-};
-
-// And add the 'Variants' type here
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } },
-};
-
+// The page remains a Server Component
 export default async function TeamPage() {
+  // 1. Fetch data on the server
   const teamMembers = await getTeamMembers();
 
-  return (
-    <main>
-      <PageHeader
-        title="The Innovators Behind C²"
-        subtitle="A team driven by passion, expertise, and a shared vision for a sustainable future."
-      />
-
-      <motion.section
-        className="py-20 md:py-28"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-      >
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-            {teamMembers.map((member) => (
-              <TeamMemberCard
-                key={member._id}
-                variants={itemVariants}
-                name={member.name}
-                role={member.role}
-                imageUrl={urlFor(member.image).width(400).height(500).url()}
-                linkedinUrl={member.linkedinUrl}
-              />
-            ))}
-          </div>
-        </div>
-      </motion.section>
-    </main>
-  );
+  // 2. Pass the fetched data as props to the Client Component
+  return <TeamPageClient teamMembers={teamMembers} />;
 }
