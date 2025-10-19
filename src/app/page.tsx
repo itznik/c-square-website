@@ -2,12 +2,11 @@
 
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import Lenis from 'lenis'; // Updated import name
+import Lenis from 'lenis';
 import { Leaf, Users, ShieldCheck, IndianRupee } from 'lucide-react';
 import CtaButton from '@/components/ui/CtaButton';
 import DifferentiatorCard from '@/components/ui/DifferentiatorCard';
 
-// This is the clean, correct data structure
 const differentiators = [
   { icon: <Users size={32} className="text-brand-olive" />, title: "Farmer-Centric", description: "Empowering India's agricultural communities is at the core of our mission, ensuring they receive fair value." },
   { icon: <ShieldCheck size={32} className="text-brand-olive" />, title: "Blockchain Trust", description: "Delivering unparalleled transparency, traceability, and security for every carbon credit." },
@@ -16,7 +15,6 @@ const differentiators = [
 ];
 
 export default function HomePage() {
-  // Initialize smooth scrolling
   useEffect(() => {
     const lenis = new Lenis();
     function raf(time: number) { lenis.raf(time); requestAnimationFrame(raf); }
@@ -31,10 +29,10 @@ export default function HomePage() {
         <div className="container mx-auto px-6 grid md:grid-cols-2 gap-10 items-center z-10">
           <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: 'easeOut' }}>
             <h1 className="text-5xl lg:text-7xl font-extrabold text-brand-deep-green leading-tight" style={{ fontFamily: "'Lora', serif" }}>
-              Building India's Transparent Carbon Market.
+              Building India&apos;s Transparent Carbon Market.
             </h1>
             <p className="mt-6 text-xl text-gray-700 max-w-lg" style={{ fontFamily: "'Inter', sans-serif" }}>
-              We connect businesses with high-quality carbon credits from the nation's farmers and environmental NGOs, making sustainability a credible, seamless process.
+              We connect businesses with high-quality carbon credits from the nation&apos;s farmers and environmental NGOs, making sustainability a credible, seamless process.
             </p>
             <CtaButton href="/contact" className="mt-10">
               Achieve Your Climate Goals

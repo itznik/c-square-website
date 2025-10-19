@@ -22,8 +22,8 @@ export default function LinkedInPostCard({ postText, postUrl }: LinkedInPostCard
       <div className="p-8 flex-grow flex flex-col">
         <Linkedin size={28} className="text-brand-accent-light mb-4" />
         <p className="text-gray-600 leading-relaxed flex-grow">
-          "{postText.substring(0, 180)}..."
-        </p>
+  &ldquo;{postText.substring(0, 180)}...&rdquo;
+</p>
         <Link 
           href={postUrl} 
           target="_blank" 

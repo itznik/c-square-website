@@ -1,8 +1,8 @@
 import { createClient } from 'next-sanity'
 import imageUrlBuilder from '@sanity/image-url'
+import type { SanityImageSource } from '@sanity/image-url/lib/types/types' // <-- Import this type
 
-// IMPORTANT: Get these from your sanity.io project dashboard
-export const projectId = 'kwb9x7v7';
+export const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!;
 export const dataset = 'production';
 const apiVersion = '2023-05-03';
 
@@ -10,11 +10,12 @@ export const client = createClient({
   projectId,
   dataset,
   apiVersion,
-  useCdn: true, // `false` if you want to ensure fresh data
+  useCdn: true,
 });
 
-// Helper function for generating image URLs with optimal settings
 const builder = imageUrlBuilder(client);
-export const urlFor = (source: any) => {
+
+// Update the type from 'any' to 'SanityImageSource'
+export const urlFor = (source: SanityImageSource) => {
   return builder.image(source);
 };
