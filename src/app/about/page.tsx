@@ -54,8 +54,8 @@ export default async function AboutPage() {
           reverse={true}
         >
           <p>
-            To be a leading catalyst in India's journey to Net Zero. We aim to make sustainable practices economically rewarding for those on the ground and environmental responsibility a seamless, credible process for businesses, unlocking vital investment in climate solutions.
-          </p>
+  To be a leading catalyst in India&apos;s journey to Net Zero. We aim to make sustainable practices economically rewarding for those on the ground and environmental responsibility a seamless, credible process for businesses, unlocking vital investment in climate solutions.
+</p>
         </TextLayout>
       </section>
 
@@ -73,8 +73,8 @@ export default async function AboutPage() {
               Latest Insights & Updates
             </h2>
             <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
-              Follow our journey and discover the latest developments in India's carbon market.
-            </p>
+  Follow our journey and discover the latest developments in India&apos;s carbon market.
+</p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -87,4 +87,5 @@ export default async function AboutPage() {
     </main>
   );
 }
+
 
