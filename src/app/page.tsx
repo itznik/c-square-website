@@ -2,18 +2,18 @@
 
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import Lenis from '@studio-freight/lenis';
+import Lenis from 'lenis'; // Updated import name
 import { Leaf, Users, ShieldCheck, IndianRupee } from 'lucide-react';
-import { Metadata } from 'next';
 import CtaButton from '@/components/ui/CtaButton';
 import DifferentiatorCard from '@/components/ui/DifferentiatorCard';
 
-// SEO Metadata for the Home Page
-export const metadata: Metadata = {
-  title: 'C² | The Transparent Carbon Credit Marketplace for India',
-  description: 'C² connects businesses with high-quality carbon credits from Indian farmers and environmental projects. Our blockchain-powered platform ensures transparency, trust, and real impact.',
-  keywords: ['carbon credits India', 'blockchain carbon market', 'sustainability goals', 'farmer-centric', 'net zero India', 'ESG reporting'],
-};
+// This is the clean, correct data structure
+const differentiators = [
+  { icon: <Users size={32} className="text-brand-olive" />, title: "Farmer-Centric", description: "Empowering India's agricultural communities is at the core of our mission, ensuring they receive fair value." },
+  { icon: <ShieldCheck size={32} className="text-brand-olive" />, title: "Blockchain Trust", description: "Delivering unparalleled transparency, traceability, and security for every carbon credit." },
+  { icon: <Leaf size={32} className="text-brand-olive" />, title: "Impact-Driven", description: "We focus on high-quality projects that deliver verifiable carbon removal and clear environmental and social co-benefits." },
+  { icon: <IndianRupee size={32} className="text-brand-olive" />, title: "India Focused", description: "Leveraging deep expertise in the Indian agricultural and carbon landscape to catalyze the journey to Net Zero." },
+];
 
 export default function HomePage() {
   // Initialize smooth scrolling
@@ -22,13 +22,6 @@ export default function HomePage() {
     function raf(time: number) { lenis.raf(time); requestAnimationFrame(raf); }
     requestAnimationFrame(raf);
   }, []);
-
-  const differentiators = [
-    [span_0](start_span)[span_1](start_span){ icon: <Users size={32} className="text-brand-olive" />, title: "Farmer-Centric", description: "Empowering India's agricultural communities is at the core of our mission, ensuring they receive fair value.[span_0](end_span)[span_1](end_span)" },
-    [span_2](start_span)[span_3](start_span){ icon: <ShieldCheck size={32} className="text-brand-olive" />, title: "Blockchain Trust", description: "Delivering unparalleled transparency, traceability, and security for every carbon credit.[span_2](end_span)[span_3](end_span)" },
-    [span_4](start_span)[span_5](start_span){ icon: <Leaf size={32} className="text-brand-olive" />, title: "Impact-Driven", description: "We focus on high-quality projects that deliver verifiable carbon removal and clear environmental and social co-benefits.[span_4](end_span)[span_5](end_span)" },
-    [span_6](start_span){ icon: <IndianRupee size={32} className="text-brand-olive" />, title: "India Focused", description: "Leveraging deep expertise in the Indian agricultural and carbon landscape to catalyze the journey to Net Zero.[span_6](end_span)" },
-  ];
 
   return (
     <main className="bg-background-light">
@@ -41,7 +34,7 @@ export default function HomePage() {
               Building India's Transparent Carbon Market.
             </h1>
             <p className="mt-6 text-xl text-gray-700 max-w-lg" style={{ fontFamily: "'Inter', sans-serif" }}>
-              [span_7](start_span)[span_8](start_span)We connect businesses with high-quality carbon credits from the nation's farmers and environmental NGOs, making sustainability a credible, seamless process.[span_7](end_span)[span_8](end_span)
+              We connect businesses with high-quality carbon credits from the nation's farmers and environmental NGOs, making sustainability a credible, seamless process.
             </p>
             <CtaButton href="/contact" className="mt-10">
               Achieve Your Climate Goals
@@ -70,7 +63,7 @@ export default function HomePage() {
               Why C²?
             </h2>
             <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
-              [span_9](start_span)Navigating the carbon market can be complex.[span_9](end_span) [span_10](start_span)Our blockchain-powered platform simplifies the entire lifecycle to ensure trust and impact.[span_10](end_span)
+              Navigating the carbon market can be complex. Our blockchain-powered platform simplifies the entire lifecycle to ensure trust and impact.
             </p>
           </motion.div>
           <motion.div
