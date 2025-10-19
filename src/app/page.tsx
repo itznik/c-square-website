@@ -3,82 +3,115 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Lenis from 'lenis';
-import { Leaf, Users, ShieldCheck, IndianRupee } from 'lucide-react';
-import CtaButton from '@/components/ui/CtaButton';
-import DifferentiatorCard from '@/components/ui/DifferentiatorCard';
+import { Leaf, Users, ShieldCheck, IndianRupee, ArrowRight, BarChart3, Bot } from 'lucide-react';
+import { Metadata } from 'next';
+import BentoCard from '@/components/ui/BentoCard';
+import clsx from 'clsx';
 
-const differentiators = [
-  { icon: <Users size={32} className="text-brand-olive" />, title: "Farmer-Centric", description: "Empowering India's agricultural communities is at the core of our mission, ensuring they receive fair value." },
-  { icon: <ShieldCheck size={32} className="text-brand-olive" />, title: "Blockchain Trust", description: "Delivering unparalleled transparency, traceability, and security for every carbon credit." },
-  { icon: <Leaf size={32} className="text-brand-olive" />, title: "Impact-Driven", description: "We focus on high-quality projects that deliver verifiable carbon removal and clear environmental and social co-benefits." },
-  { icon: <IndianRupee size={32} className="text-brand-olive" />, title: "India Focused", description: "Leveraging deep expertise in the Indian agricultural and carbon landscape to catalyze the journey to Net Zero." },
-];
+// SEO Metadata for the Home Page
+export const metadata: Metadata = {
+  title: 'C² | The Transparent Carbon Credit Marketplace for India',
+  description: 'C² connects businesses with high-quality carbon credits from Indian farmers and environmental projects. Our blockchain-powered platform ensures transparency, trust, and real impact.',
+  keywords: ['carbon credits India', 'blockchain carbon market', 'sustainability goals', 'farmer-centric', 'net zero India', 'ESG reporting'],
+};
+
+// Background component for a subtle animated gradient
+const GradientBackground = () => (
+  <motion.div
+    initial={{ backgroundPosition: "0% 50%" }}
+    animate={{ backgroundPosition: "100% 50%" }}
+    transition={{
+      repeat: Infinity,
+      repeatType: "mirror",
+      duration: 10,
+      ease: "easeInOut",
+    }}
+    className="absolute inset-0 z-0"
+    style={{
+      backgroundSize: "200% 200%",
+      backgroundImage: `linear-gradient(135deg, var(--brand-accent-cream) 0%, #ffffff 50%, var(--brand-accent-cream) 100%)`,
+    }}
+  />
+);
 
 export default function HomePage() {
+  // Initialize smooth scrolling
   useEffect(() => {
     const lenis = new Lenis();
     function raf(time: number) { lenis.raf(time); requestAnimationFrame(raf); }
     requestAnimationFrame(raf);
   }, []);
 
+  const bentoItems = [
+    { title: "Our Mission", subtitle: "Building India's transparent carbon market.", icon: <Leaf className="text-brand-olive" />, href: "/about", className: "col-span-1 md:col-span-2", background: <GradientBackground /> },
+    { title: "Our Services", subtitle: "End-to-end sustainability solutions.", icon: <BarChart3 className="text-brand-olive" />, href: "/services", className: "col-span-1", background: <div className="absolute inset-0 bg-white" /> },
+    { title: "How It Works", subtitle: "A clear, seamless journey to impact.", icon: <Bot className="text-brand-olive" />, href: "/how-it-works", className: "col-span-1", background: <div className="absolute inset-0 bg-white" /> },
+    { title: "Blockchain Trust", subtitle: "Unparalleled transparency and security.", icon: <ShieldCheck className="text-brand-olive" />, href: "/about", className: "col-span-1 md:col-span-2", background: <div className="absolute inset-0 bg-white" /> },
+    { title: "Meet Our Team", subtitle: "The innovators behind C².", icon: <Users className="text-brand-olive" />, href: "/team", className: "col-span-1", background: <GradientBackground /> },
+  ];
+
   return (
     <main className="bg-background-light">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
-        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-        <div className="container mx-auto px-6 grid md:grid-cols-2 gap-10 items-center z-10">
-          <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: 'easeOut' }}>
-            <h1 className="text-5xl lg:text-7xl font-extrabold text-brand-deep-green leading-tight" style={{ fontFamily: "'Lora', serif" }}>
-              Building India&apos;s Transparent Carbon Market.
-            </h1>
-            <p className="mt-6 text-xl text-gray-700 max-w-lg" style={{ fontFamily: "'Inter', sans-serif" }}>
-              We connect businesses with high-quality carbon credits from the nation&apos;s farmers and environmental NGOs, making sustainability a credible, seamless process.
-            </p>
-            <CtaButton href="/contact" className="mt-10">
-              Achieve Your Climate Goals
-            </CtaButton>
-          </motion.div>
-          <motion.div initial={{ opacity: 0, scale: 0.5 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}>
-            <div className="relative w-full h-96 flex items-center justify-center">
-              <div className="absolute w-full h-full bg-brand-accent-cream rounded-full blur-3xl opacity-60"></div>
-              <p className="z-10 text-brand-olive">[Animated SVG Illustration of Blockchain & Nature Intertwined]</p>
-            </div>
-          </motion.div>
-        </div>
+      {/* Hero Text Section */}
+      <section className="container mx-auto px-6 py-24 md:py-32 text-center">
+        <motion.h1 
+          className="text-5xl lg:text-7xl font-extrabold text-brand-deep-green leading-tight" style={{ fontFamily: "'Lora', serif" }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+        >
+          The Future of Carbon Offsetting is Here.
+        </motion.h1>
+        <motion.p 
+          className="mt-6 text-xl text-gray-700 max-w-3xl mx-auto" style={{ fontFamily: "'Inter', sans-serif" }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1, ease: 'easeOut' }}
+        >
+          We connect businesses with high-quality carbon credits from the nation's farmers and environmental NGOs, making sustainability a credible, seamless process.
+        </motion.p>
       </section>
 
-      {/* Differentiators Section */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-6">
-          <motion.div
-            className="text-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.7 }}
-          >
-            <h2 className="text-4xl md:text-5xl font-extrabold text-brand-deep-green" style={{ fontFamily: "'Lora', serif" }}>
-              Why C²?
-            </h2>
-            <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
-              Navigating the carbon market can be complex. Our blockchain-powered platform simplifies the entire lifecycle to ensure trust and impact.
-            </p>
-          </motion.div>
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ staggerChildren: 0.15 }}
-          >
-            {differentiators.map((item, index) => (
-              <motion.div key={index} variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } } }}>
-                <DifferentiatorCard {...item} />
-              </motion.div>
-            ))}
-          </motion.div>
+      {/* Bento Grid Section */}
+      <motion.section
+        className="container mx-auto px-6"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ staggerChildren: 0.1 }}
+      >
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {bentoItems.map((item, index) => (
+             <BentoCard key={index} {...item} className={clsx("h-64", item.className)} />
+          ))}
         </div>
+      </motion.section>
+      
+      {/* Final Call to Action */}
+      <section className="container mx-auto px-6 py-24 md:py-32 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+        >
+          <h2 className="text-4xl font-bold text-brand-deep-green" style={{ fontFamily: "'Lora', serif" }}>
+            Ready to Make an Impact?
+          </h2>
+          <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+            Partner with C² and let us help you achieve your climate and sustainability goals.
+          </p>
+          <motion.div 
+            className="inline-block mt-8"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Link href="/contact" className="inline-flex items-center bg-brand-olive text-text-light font-bold py-4 px-10 rounded-full text-lg shadow-lg hover:shadow-xl transition-shadow">
+              Get Started <ArrowRight className="ml-2" />
+            </Link>
+          </motion.div>
+        </motion.div>
       </section>
     </main>
   );
-}
+                                                                           }
