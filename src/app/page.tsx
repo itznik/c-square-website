@@ -34,8 +34,8 @@ export default function HomePage() {
               Building India's Transparent Carbon Market.
             </h1>
             <p className="mt-6 text-xl text-gray-700 max-w-lg" style={{ fontFamily: "'Inter', sans-serif" }}>
-              We connect businesses with high-quality carbon credits from the nation's farmers and environmental NGOs, making sustainability a credible, seamless process.
-            </p>
+  We connect businesses with high-quality carbon credits from the nation&apos;s farmers and environmental NGOs, making sustainability a credible, seamless process.
+</p>
             <CtaButton href="/contact" className="mt-10">
               Achieve Your Climate Goals
             </CtaButton>
@@ -63,8 +63,8 @@ export default function HomePage() {
               Why C²?
             </h2>
             <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
-              Navigating the carbon market can be complex. Our blockchain-powered platform simplifies the entire lifecycle to ensure trust and impact.
-            </p>
+  Navigating the carbon market can be complex. Our blockchain-powered platform simplifies the entire lifecycle to ensure trust and impact.
+</p>
           </motion.div>
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16"
