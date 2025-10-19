@@ -24,9 +24,10 @@ const containerVariants = {
   visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
 };
 
+// CORRECTED: The transition property has been removed from the 'visible' state
 const itemVariants = {
   hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } },
+  visible: { opacity: 1, y: 0 },
 };
 
 // This is the Client Component that uses framer-motion
