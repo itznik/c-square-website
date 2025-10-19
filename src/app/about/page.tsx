@@ -42,8 +42,8 @@ export default async function AboutPage() {
           illustration={<IllustrationPlaceholder />}
         >
           <p>
-            C² was founded on a powerful idea: that collective action is key to tackling climate change. We saw a need for a platform that not only facilitates carbon credit transactions but also builds trust and transparency, ensuring India's agricultural communities receive fair value for their crucial environmental contributions.
-          </p>
+  C² was founded on a powerful idea: that collective action is key to tackling climate change. We saw a need for a platform that not only facilitates carbon credit transactions but also builds trust and transparency, ensuring India&apos;s agricultural communities receive fair value for their crucial environmental contributions.
+</p>
         </TextLayout>
       </section>
       
@@ -87,3 +87,4 @@ export default async function AboutPage() {
     </main>
   );
 }
+
