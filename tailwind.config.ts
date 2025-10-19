@@ -1,6 +1,5 @@
-import type { Config } from 'tailwindcss'
-
-const config: Config = {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -8,15 +7,23 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      // NEW DARK THEME COLOR PALETTE
       colors: {
-        'background-light': 'var(--background-light)',
-        'brand-green': 'var(--brand-green)',
-        'text-dark': 'var(--text-dark)',
-        'text-light': 'var(--text-light)',
-        'accent': 'var(--accent)',
+        'brand-dark': '#0a0a0a', // Almost black for deep backgrounds
+        'brand-charcoal': '#1a1a1a', // Dark grey for secondary elements
+        'brand-stone': '#2c2c2c', // Lighter grey for cards and borders
+        'brand-light': '#f0f0f0', // Off-white for primary text
+        'brand-accent': '#00ff99', // A vibrant, modern green accent
+        'brand-accent-dark': '#00cc7a', // A darker green for hover states
+      },
+      fontFamily: {
+        sans: ['var(--font-inter)'],
+        serif: ['var(--font-lora)'],
+      },
+      backgroundImage: {
+        'grid-pattern': "url('/grid.svg')",
       },
     },
   },
   plugins: [],
 }
-export default config
