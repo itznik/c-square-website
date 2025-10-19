@@ -2,12 +2,11 @@
 
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import Lenis from 'lenis'; // Updated import name
+import Lenis from 'lenis';
 import { Leaf, Users, ShieldCheck, IndianRupee } from 'lucide-react';
 import CtaButton from '@/components/ui/CtaButton';
 import DifferentiatorCard from '@/components/ui/DifferentiatorCard';
 
-// This is the clean, correct data structure
 const differentiators = [
   { icon: <Users size={32} className="text-brand-olive" />, title: "Farmer-Centric", description: "Empowering India's agricultural communities is at the core of our mission, ensuring they receive fair value." },
   { icon: <ShieldCheck size={32} className="text-brand-olive" />, title: "Blockchain Trust", description: "Delivering unparalleled transparency, traceability, and security for every carbon credit." },
@@ -16,7 +15,6 @@ const differentiators = [
 ];
 
 export default function HomePage() {
-  // Initialize smooth scrolling
   useEffect(() => {
     const lenis = new Lenis();
     function raf(time: number) { lenis.raf(time); requestAnimationFrame(raf); }
@@ -34,8 +32,8 @@ export default function HomePage() {
               Building India's Transparent Carbon Market.
             </h1>
             <p className="mt-6 text-xl text-gray-700 max-w-lg" style={{ fontFamily: "'Inter', sans-serif" }}>
-  We connect businesses with high-quality carbon credits from the nation&apos;s farmers and environmental NGOs, making sustainability a credible, seamless process.
-</p>
+              We connect businesses with high-quality carbon credits from the nation&apos;s farmers and environmental NGOs, making sustainability a credible, seamless process.
+            </p>
             <CtaButton href="/contact" className="mt-10">
               Achieve Your Climate Goals
             </CtaButton>
@@ -63,8 +61,8 @@ export default function HomePage() {
               Why C²?
             </h2>
             <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
-  Navigating the carbon market can be complex. Our blockchain-powered platform simplifies the entire lifecycle to ensure trust and impact.
-</p>
+              Navigating the carbon market can be complex. Our blockchain-powered platform simplifies the entire lifecycle to ensure trust and impact.
+            </p>
           </motion.div>
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16"
