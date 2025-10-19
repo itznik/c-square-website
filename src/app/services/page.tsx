@@ -1,85 +1,44 @@
-import AnimatedSection from '@/components/AnimatedSection';
-import ServiceBlock from '@/components/ServiceBlock';
-import Link from 'next/link';
+"use client";
 
-// Placeholder data
+import { motion } from 'framer-motion';
+import { BadgeCheck, BarChart3, Handshake, Search } from 'lucide-react';
+import PageHeader from '@/components/ui/PageHeader';
+import ServiceCard from '@/components/ui/ServiceCard';
+
+// Service Data with SEO-rich content
 const services = [
-  {
-    id: 1,
-    title: 'Carbon Credit Verification',
-    description: 'We provide rigorous verification for sustainability projects, ensuring they meet global standards for carbon offsetting.',
-  },
-  {
-    id: 2,
-    title: 'Marketplace Platform',
-    description: 'Our transparent platform connects businesses seeking to offset their carbon footprint with verified, high-impact projects.',
-  },
-  {
-    id: 3,
-    title: 'Portfolio Management',
-    description: 'We help businesses build and manage a diverse portfolio of carbon credits that align with their sustainability goals.',
-  },
-  {
-    id: 4,
-    title: 'Advisory Services',
-    description: 'Our experts provide strategic guidance on carbon neutrality, helping you navigate the complexities of the carbon market.',
-  },
-];
-
-const partners = [
-  { id: 1, name: 'EcoVerify Standard', url: '#' },
-  { id: 2, name: 'Green Future Fund', url: '#' },
-  { id: 3, name: 'Sustain Ledger', url: '#' },
+  { icon: <BadgeCheck size={32} className="text-brand-olive" />, title: "Carbon Credit Verification & Facilitation", description: "We facilitate the rigorous verification of your projects against global standards, ensuring every credit's integrity and value." },
+  { icon: <Search size={32} className="text-brand-olive" />, title: "Project Onboarding & Carbon Calculation", description: "Our platform simplifies the entire lifecycle, from project onboarding to providing support for accurate carbon calculations." },
+  { icon: <BarChart3 size={32} className="text-brand-olive" />, title: "Secure, Transparent Trading Platform", description: "Leverage our blockchain-powered marketplace for unparalleled transparency, traceability, and security in every transaction." },
+  { icon: <Handshake size={32} className="text-brand-olive" />, title: "ESG & Green Credit Advisory", description: "We help you integrate Carbon and Green Credits into your ESG strategy to achieve your net-zero goals and enhance your sustainability credentials." },
 ];
 
 export default function ServicesPage() {
   return (
     <main>
-      {/* Page Header */}
-      <AnimatedSection className="py-20 md:py-28 bg-white">
-        <div className="container mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-6xl font-extrabold text-brand-green">
-            Our Services
-          </h1>
-          <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
-            End-to-end solutions for a transparent and effective carbon offsetting journey.
-          </p>
-        </div>
-      </AnimatedSection>
+      <PageHeader
+        title="End-to-End Sustainability Solutions"
+        subtitle="From project verification to ESG strategy, we provide the tools and expertise to navigate India's carbon market with confidence and impact."
+      />
 
-      {/* Services Grid */}
-      <AnimatedSection className="py-20 md:py-28">
+      <section className="py-20 md:py-32">
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-8">
-            {services.map((service) => (
-              <ServiceBlock
-                key={service.id}
-                title={service.title}
-                description={service.description}
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ staggerChildren: 0.15 }}
+          >
+            {services.map((service, index) => (
+              <ServiceCard
+                key={index}
+                {...service}
               />
             ))}
-          </div>
+          </motion.div>
         </div>
-      </AnimatedSection>
-
-      {/* Partners Section */}
-      <AnimatedSection className="py-20 md:py-28 bg-white">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-brand-green">
-            Our Trusted Partners
-          </h2>
-          <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
-            We collaborate with industry leaders to ensure the integrity and impact of our marketplace.
-          </p>
-          <div className="mt-12 flex flex-wrap justify-center items-center gap-x-12 gap-y-6">
-            {partners.map((partner) => (
-              <Link key={partner.id} href={partner.url} className="text-2xl font-semibold text-gray-500 hover:text-brand-green transition-colors">
-                {partner.name}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </AnimatedSection>
+      </section>
     </main>
   );
 }
