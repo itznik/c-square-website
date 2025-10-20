@@ -2,61 +2,61 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
     { href: '/', label: 'Home' },
-    { href: '/about', label: 'About Us' },
+    { href: '/about', label: 'About' },
     { href: '/services', label: 'Services' },
-    { href: '/how-it-works', label: 'How It Works' },
-    { href: '/team', label: 'Our Team' },
+    { href: '/team', label: 'Team' },
+    { href: '/partners', label: 'Partners' },
   ];
 
   return (
-    <header className="bg-background-light/80 backdrop-blur-md sticky top-0 z-50">
-      <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-        {/* Logo */}
-        <Link href="/" className="text-3xl font-extrabold text-brand-green">
-          C²
-        </Link>
+    <>
+      <header className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-6xl z-50">
+        <div className="glass-pane flex items-center justify-between p-4">
+          <Link href="/" className="text-2xl font-bold text-brand-accent" style={{ fontFamily: "var(--font-lora)" }}>
+            C²
+          </Link>
+          <nav className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <Link key={link.href} href={link.href} className="font-semibold text-brand-light/80 hover:text-white transition-colors">
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+          <Link href="/contact" className="hidden md:inline-block bg-brand-accent text-brand-dark font-bold py-2 px-6 rounded-full hover:bg-brand-accent-dark transition-colors">
+            Contact Us
+          </Link>
+          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden z-50 relative h-8 w-8 text-brand-light">
+            <div className="w-6 h-0.5 bg-current rounded-full transition-all duration-300 ease-in-out absolute top-3" style={{ transform: isMenuOpen ? 'rotate(45deg)' : 'none' }}></div>
+            <div className="w-6 h-0.5 bg-current rounded-full transition-all duration-300 ease-in-out absolute top-5" style={{ transform: isMenuOpen ? 'rotate(-45deg)' : 'none', opacity: isMenuOpen ? 0 : 1 }}></div>
+          </button>
+        </div>
+      </header>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-8">
+      {/* Mobile Menu Overlay */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={isMenuOpen ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.3 }}
+        className={`md:hidden fixed inset-0 z-40 glass-pane flex items-center justify-center ${isMenuOpen ? 'block' : 'hidden'}`}
+      >
+        <nav className="flex flex-col items-center gap-8">
           {navLinks.map((link) => (
-            <Link key={link.href} href={link.href} className="text-text-dark hover:text-brand-green transition-colors font-semibold">
+            <Link key={link.href} href={link.href} onClick={() => setIsMenuOpen(false)} className="text-3xl font-semibold text-brand-light">
               {link.label}
             </Link>
           ))}
-        </div>
-
-        {/* Contact Button */}
-        <Link href="/contact" className="hidden md:inline-block bg-brand-green text-text-light font-bold py-2 px-6 rounded-full hover:opacity-90 transition-opacity">
-          Enquire Now
-        </Link>
-
-        {/* Mobile Menu Button */}
-        <div className="md:hidden">
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-brand-green focus:outline-none">
-            <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"} />
-            </svg>
-          </button>
-        </div>
-      </nav>
-
-      {/* --- Mobile Menu --- */}
-      <div className={`md:hidden absolute top-full left-0 w-full bg-background-light shadow-lg ${isMenuOpen ? 'block' : 'hidden'}`}>
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-center">
-          {navLinks.map((link) => (
-             <Link key={link.href} href={link.href} className="block text-text-dark hover:text-brand-green py-3 text-lg">{link.label}</Link>
-          ))}
-          <Link href="/contact" className="mt-4 block w-1/2 text-center bg-brand-green text-text-light font-semibold py-2 px-4 rounded-full hover:opacity-90">
-            Enquire Now
+          <Link href="/contact" onClick={() => setIsMenuOpen(false)} className="mt-8 bg-brand-accent text-brand-dark font-bold py-3 px-8 rounded-full text-lg">
+            Contact Us
           </Link>
-        </div>
-      </div>
-    </header>
+        </nav>
+      </motion.div>
+    </>
   );
 }
