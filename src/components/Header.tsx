@@ -17,8 +17,9 @@ export default function Header() {
 
   return (
     <>
-      <header className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-6xl z-50">
-        <div className="glass-pane flex items-center justify-between p-4">
+      {/* This is the correct full-width sticky header */}
+      <header className="fixed top-0 left-0 w-full z-50 p-4">
+        <div className="glass-pane flex items-center justify-between p-4 max-w-7xl mx-auto">
           <Link href="/" className="text-2xl font-bold text-brand-accent" style={{ fontFamily: "var(--font-lora)" }}>
             C²
           </Link>
@@ -33,8 +34,10 @@ export default function Header() {
             Contact Us
           </Link>
           <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden z-50 relative h-8 w-8 text-brand-light">
-            <div className="w-6 h-0.5 bg-current rounded-full transition-all duration-300 ease-in-out absolute top-3" style={{ transform: isMenuOpen ? 'rotate(45deg)' : 'none' }}></div>
-            <div className="w-6 h-0.5 bg-current rounded-full transition-all duration-300 ease-in-out absolute top-5" style={{ transform: isMenuOpen ? 'rotate(-45deg)' : 'none', opacity: isMenuOpen ? 0 : 1 }}></div>
+            <div className={`w-6 h-0.5 bg-current rounded-full transition-all duration-300 ease-in-out absolute top-3.5 ${isMenuOpen ? 'rotate-45' : ''}`}></div>
+            <div className={`w-6 h-0.5 bg-current rounded-full transition-all duration-300 ease-in-out absolute top-5 ${isMenuOpen ? '-rotate-45' : ''}`} style={{ opacity: isMenuOpen ? 0 : 1 }}></div>
+             <div className={`w-6 h-0.5 bg-current rounded-full transition-all duration-300 ease-in-out absolute top-3.5 ${isMenuOpen ? '-rotate-45' : ''}`}></div>
+
           </button>
         </div>
       </header>
