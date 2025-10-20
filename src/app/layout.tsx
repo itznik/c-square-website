@@ -1,10 +1,12 @@
 import type { Metadata } from 'next';
 import { Inter, Lora } from 'next/font/google';
-import './globals.css'; // This line imports all your styling.
+import './globals.css';
+
+// Import the Header and Footer components
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
-// Configure the fonts to be used with Tailwind CSS
+// Configure the fonts
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const lora = Lora({ subsets: ['latin'], variable: '--font-lora' });
 
@@ -14,12 +16,19 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  // Apply the font variables to the html tag
   return (
     <html lang="en" className={`${inter.variable} ${lora.variable}`}>
       <body>
-        {/* We will add the Header and Footer back after confirming the main content styles are fixed. */}
-        {children}
+        {/* Add the Header here */}
+        <Header />
+        
+        {/* Wrap the page content in a <main> tag for semantics */}
+        <main>
+          {children}
+        </main>
+        
+        {/* Add the Footer here */}
+        <Footer />
       </body>
     </html>
   );
