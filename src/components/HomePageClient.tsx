@@ -1,62 +1,31 @@
 "use client";
 
-import { useEffect, useMemo } from 'react';
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Lenis from 'lenis';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-import Particles, { initParticlesEngine } from "@tsparticles/react";
-import { loadSlim } from "@tsparticles/slim";
-import type { ISourceOptions } from "@tsparticles/engine";
 import TestimonialCarousel from '@/components/ui/TestimonialCarousel';
 
-// Placeholder data for testimonials - this will be moved to the CMS
+// Placeholder data - this will eventually come from the CMS
 const testimonials = [
   { quote: "C²'s platform is a game-changer for transparency in the carbon market. Their commitment to empowering farmers is truly inspiring.", author: "Amrit Om Nayak", title: "CEO & Co-Founder, Indra" },
   { quote: "Navigating the new Green Credit rules was complex. C² provided the expert guidance we needed to integrate them into our ESG strategy effectively.", author: "Ruchi Sharma", title: "Co-founder, C²" },
   { quote: "The integrity and traceability provided by their blockchain-powered system are unparalleled. We can finally trust the impact of our investments.", author: "Harjas Sethi", title: "Founder, C²" },
-  { quote: "As an early-stage startup, the mentorship and support from the team have been invaluable. They're not just a platform; they're a partner.", author: "Krisha Devannavar", title: "CBO, C²" },
 ];
 
 export default function HomePageClient() {
-  // State and effect for particles engine initialization
+  // Smooth scrolling initialization
   useEffect(() => {
-    initParticlesEngine(async (engine) => {
-      await loadSlim(engine);
-    });
-    
-    // Smooth scrolling initialization
     const lenis = new Lenis();
     function raf(time: number) { lenis.raf(time); requestAnimationFrame(raf); }
     requestAnimationFrame(raf);
   }, []);
 
-  // Memoized particle configuration for performance
-  const particleOptions: ISourceOptions = useMemo(() => ({
-    background: { color: { value: '#0a0a0a' } },
-    fpsLimit: 60,
-    interactivity: {
-      events: { onHover: { enable: true, mode: 'repulse' } },
-      modes: { repulse: { distance: 100, duration: 0.4 } },
-    },
-    particles: {
-      color: { value: '#2c2c2c' },
-      links: { color: '#2c2c2c', distance: 150, enable: true, opacity: 0.2, width: 1 },
-      move: { direction: 'none', enable: true, outModes: { default: 'bounce' }, random: false, speed: 1, straight: false },
-      number: { density: { enable: true }, value: 80 },
-      opacity: { value: 0.2 },
-      shape: { type: 'circle' },
-      size: { value: { min: 1, max: 3 } },
-    },
-    detectRetina: true,
-  }), []);
-
   return (
     <main>
-      {/* Layer 1: Animated Particle Background */}
-      <div className="fixed inset-0 z-0">
-        <Particles id="tsparticles" options={particleOptions} />
-      </div>
+      {/* Layer 1: Animated Gradient Background */}
+      <div className="fixed inset-0 z-0 gradient-background"></div>
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
@@ -71,7 +40,7 @@ export default function HomePageClient() {
             {/* Layer 3: Animated Content */}
             <motion.h1
               className="text-5xl lg:text-7xl font-extrabold leading-tight text-brand-light"
-              style={{ fontFamily: "'Lora', serif", textShadow: '0 0 20px rgba(0, 255, 153, 0.3)' }}
+              style={{ fontFamily: "'Lora', serif", textShadow: '0 0 25px rgba(0, 255, 153, 0.4)' }}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2, ease: 'easeOut' }}
@@ -130,4 +99,4 @@ export default function HomePageClient() {
       </section>
     </main>
   );
-          }
+        }
