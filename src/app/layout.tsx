@@ -1,31 +1,26 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.css';
-import Header from '@/components/Header'; // Import Header
-import Footer from '@/components/Footer'; // Import Footer
+// Correctly import the necessary fonts
+import { Inter, Lora } from 'next/font/google';
+import './globals.css'; // This line imports all your styling
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
-const inter = Inter({ subsets: ['latin'] });
+// Configure the fonts to be used with Tailwind CSS
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
+const lora = Lora({ subsets: ['latin'], variable: '--font-lora' });
 
 export const metadata: Metadata = {
-  title: 'C² - Your Trusted Partner',
-  description: 'Building the future with innovative solutions.',
+  title: 'C² | The Transparent Carbon Credit Marketplace for India',
+  description: 'C² connects businesses with high-quality carbon credits from Indian farmers and environmental projects.',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  // Apply the font variables to the html tag
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <div className="flex flex-col min-h-screen">
-          <Header /> {/* Add Header here */}
-          <main className="flex-grow">
-            {children} {/* This is where your page content will go */}
-          </main>
-          <Footer /> {/* Add Footer here */}
-        </div>
+    <html lang="en" className={`${inter.variable} ${lora.variable}`}>
+      <body>
+        {/* The Header and Footer are removed to simplify and ensure the main content renders */}
+        {children}
       </body>
     </html>
   );
