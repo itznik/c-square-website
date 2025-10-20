@@ -3,46 +3,54 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, Variants } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+import { Linkedin } from 'lucide-react';
 
 type TeamMemberCardProps = {
   imageUrl: string;
   name: string;
   role: string;
   linkedinUrl: string;
-  variants?: Variants; // Accept animation variants from the parent
+  variants?: Variants;
 };
 
 export default function TeamMemberCard({ imageUrl, name, role, linkedinUrl, variants }: TeamMemberCardProps) {
   return (
     <motion.div
-      className="bg-white rounded-xl overflow-hidden shadow-lg border border-transparent hover:border-brand-accent-light transition-colors duration-300 group"
+      className="relative bg-white/5 backdrop-blur-lg rounded-2xl overflow-hidden border border-white/10 group"
       variants={variants}
-      whileHover={{ y: -8, boxShadow: "0px 20px 25px -5px rgba(0, 0, 0, 0.1), 0px 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
+      whileHover={{ y: -8, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)" }}
     >
-      <div className="relative h-80">
+      {/* Background Image with Hover Effect */}
+      <div className="relative h-96">
         <Image
           src={imageUrl}
           alt={`Photo of ${name}`}
           fill
           style={{ objectFit: 'cover' }}
-          className="group-hover:scale-105 transition-transform duration-500 ease-in-out"
+          className="grayscale group-hover:grayscale-0 transition-all duration-500 ease-in-out"
         />
+        {/* Subtle overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
       </div>
-      <div className="p-6 text-left">
-        <h3 className="text-2xl font-bold text-brand-deep-green" style={{ fontFamily: "'Lora', serif" }}>
+      
+      {/* Content */}
+      <div className="absolute bottom-0 left-0 p-6 w-full">
+        <h3 className="text-2xl font-bold text-white" style={{ fontFamily: "'Lora', serif" }}>
           {name}
         </h3>
-        <p className="text-brand-olive font-semibold mt-1">{role}</p>
-        <Link
-          href={linkedinUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center mt-4 font-bold text-text-dark group-hover:text-brand-olive transition-colors"
-        >
-          View Profile <ArrowUpRight size={20} className="ml-1" />
-        </Link>
+        <p className="text-brand-accent font-semibold mt-1">{role}</p>
       </div>
+
+      {/* LinkedIn Link on Hover */}
+      <Link
+        href={linkedinUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="absolute top-4 right-4 h-12 w-12 bg-white/10 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        aria-label={`${name}'s LinkedIn Profile`}
+      >
+        <Linkedin className="text-white" />
+      </Link>
     </motion.div>
   );
 }
