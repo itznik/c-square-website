@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image'; // We'll use next/image for optimal performance
 
 type Partner = {
   name: string;
@@ -14,16 +15,11 @@ type PartnerMarqueeProps = {
   speed?: number; // Speed in seconds for a full loop
 };
 
-export default function PartnerMarquee({ partners, speed = 40 }: PartnerMarqueeProps) {
-  // Duplicate the array to create a seamless loop
+export default function PartnerMarquee({ partners, speed = 60 }: PartnerMarqueeProps) {
   const doubledPartners = [...partners, ...partners];
 
   return (
-    <div className="relative w-full overflow-hidden">
-      {/* Fading gradient masks on the edges */}
-      <div className="absolute left-0 top-0 z-10 h-full w-16 bg-gradient-to-r from-background-light to-transparent" />
-      <div className="absolute right-0 top-0 z-10 h-full w-16 bg-gradient-to-l from-background-light to-transparent" />
-      
+    <div className="relative w-full overflow-hidden mask-image-gradient">
       <motion.div
         className="flex"
         animate={{
@@ -36,16 +32,19 @@ export default function PartnerMarquee({ partners, speed = 40 }: PartnerMarqueeP
         }}
       >
         {doubledPartners.map((partner, index) => (
-          <Link
-            key={index}
-            href={partner.website}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-shrink-0 w-64 p-8 mx-4 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300"
-          >
-            {/* Replace with <Image /> tag when you have real logos */}
-            <span className="text-2xl font-semibold text-center text-gray-400">{partner.name}</span>
-          </Link>
+          <div key={index} className="flex-shrink-0 w-64 p-4 mx-4">
+            <Link
+              href={partner.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block bg-white/5 backdrop-blur-lg rounded-2xl p-8 h-40 flex items-center justify-center border border-white/10 group transition-all duration-300 hover:bg-white/10 hover:border-brand-accent"
+            >
+              {/* For now, we'll use a text placeholder. Replace with Image component when you have logos. */}
+              <span className="text-xl font-semibold text-center text-brand-light/70 group-hover:text-white transition-colors duration-300">
+                {partner.name}
+              </span>
+            </Link>
+          </div>
         ))}
       </motion.div>
     </div>
