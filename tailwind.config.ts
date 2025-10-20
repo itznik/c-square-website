@@ -8,7 +8,7 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      // The dark theme color palette
+      // The high-end dark theme color palette
       colors: {
         'brand-dark': '#0a0a0a',
         'brand-charcoal': '#1a1a1a',
@@ -16,8 +16,8 @@ const config: Config = {
         'brand-light': '#f0f0f0',
         'brand-accent': '#00ff99',
         'brand-accent-dark': '#00cc7a',
-        'brand-deep-green': '#38423B', // Added from previous steps
-        'brand-accent-cream': '#EAE9E4', // Added from previous steps
+        'brand-deep-green': '#38423B',
+        'brand-accent-cream': '#EAE9E4',
       },
       // Connect the font variables from layout.tsx
       fontFamily: {
