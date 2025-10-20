@@ -13,6 +13,7 @@
 body {
   background-color: var(--brand-dark);
   color: var(--brand-light);
+  /* Use the font variable defined in the layout file */
   font-family: var(--font-inter), sans-serif;
 }
 
