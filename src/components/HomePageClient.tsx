@@ -7,7 +7,7 @@ import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import TestimonialCarousel from '@/components/ui/TestimonialCarousel';
 
-// Placeholder data - this will eventually come from the CMS
+// Placeholder data for testimonials with React entities for apostrophes
 const testimonials = [
   { quote: "C²'s platform is a game-changer for transparency in the carbon market. Their commitment to empowering farmers is truly inspiring.", author: "Amrit Om Nayak", title: "CEO & Co-Founder, Indra" },
   { quote: "Navigating the new Green Credit rules was complex. C² provided the expert guidance we needed to integrate them into our ESG strategy effectively.", author: "Ruchi Sharma", title: "Co-founder, C²" },
@@ -30,9 +30,9 @@ export default function HomePageClient() {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
         <div className="relative z-10 p-8 max-w-4xl mx-auto">
-          {/* Layer 2: Glassmorphism Container */}
+          {/* Layer 2: Glassmorphism Container with the new reusable class */}
           <motion.div 
-            className="bg-white/5 backdrop-blur-xl rounded-2xl p-8 md:p-12 border border-white/10 shadow-2xl"
+            className="glass-pane p-8 md:p-12"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
@@ -99,4 +99,4 @@ export default function HomePageClient() {
       </section>
     </main>
   );
-        }
+              }
