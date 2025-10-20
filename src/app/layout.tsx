@@ -17,7 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${inter.variable} ${lora.variable}`}>
       <body>
         <Header />
-        {/* Added padding-top to prevent content from hiding under the fixed header */}
+        {/* This pt-28 (padding-top) is essential for correct spacing */}
         <main className="pt-28">
           {children}
         </main>
