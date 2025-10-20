@@ -58,12 +58,25 @@ export default function HomePageClient() {
           </div>
         </section>
 
-        {/* SECTION 2: CORE PILLARS */}
+        {/* SECTION 2: CORE PILLARS (CORRECTED) */}
         <section className="py-24 md:py-32">
           <div className="container mx-auto px-6">
-            <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} transition={{ staggerChildren: 0.15 }}>
+            <motion.div 
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" 
+              initial="hidden" 
+              whileInView="visible" 
+              viewport={{ once: true, amount: 0.2 }} 
+              transition={{ staggerChildren: 0.15 }}
+            >
               {pillars.map((pillar) => (
-                <GlassPane as={motion.div} key={pillar.title} className="p-8 text-center" variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } }} transition={{ ease: 'easeOut', duration: 0.7 }}>
+                // The 'as' prop is removed. GlassPane is already a motion.div
+                // and can accept animation variants directly.
+                <GlassPane 
+                  key={pillar.title} 
+                  className="p-8 text-center" 
+                  variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } }} 
+                  transition={{ ease: 'easeOut', duration: 0.7 }}
+                >
                   <div className="inline-block mb-4">{pillar.icon}</div>
                   <h3 className="text-xl font-bold text-brand-light mb-2" style={{ fontFamily: "var(--font-lora)" }}>{pillar.title}</h3>
                   <p className="text-brand-light/70">{pillar.description}</p>
@@ -105,4 +118,4 @@ export default function HomePageClient() {
       </div>
     </main>
   );
-                  }
+                                }
