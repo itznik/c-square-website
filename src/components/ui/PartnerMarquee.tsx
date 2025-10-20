@@ -1,8 +1,7 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import Link from 'next/link';
-import Image from 'next/image'; // We'll use next/image for optimal performance
+import Link from 'next/link'; // We'll use next/image for optimal performance
 
 type Partner = {
   name: string;
