@@ -1,7 +1,6 @@
 "use client";
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Rocket } from 'lucide-react';
 
 export default function Footer() {
@@ -15,24 +14,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-brand-charcoal text-brand-light/70 overflow-hidden relative z-10">
-      {/* Incubator Banner */}
-      <div className="bg-brand-stone/50">
-        <div className="container mx-auto px-6 py-4">
-          <Link 
-            href="https://riidl.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center text-center text-brand-light group"
-          >
-            <Rocket size={16} className="mr-3 text-brand-accent group-hover:scale-110 transition-transform" />
-            <span className="font-semibold text-sm">
-              Proudly incubated at <span className="font-bold underline group-hover:text-brand-accent transition-colors">riidl</span>
-            </span>
-          </Link>
-        </div>
-      </div>
-
-      <div className="container mx-auto px-6 py-16">
+      <div className="container mx-auto px-6 pt-16 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
           {/* Brand & Mission */}
           <div className="md:col-span-4">
@@ -45,7 +27,7 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className="md:col-span-2">
+          <div className="md:col-span-2 md:col-start-6">
             <h3 className="font-bold text-lg text-white mb-4">Navigate</h3>
             <ul className="space-y-3">
               {links.map((link) => (
@@ -71,6 +53,23 @@ export default function Footer() {
         
         <div className="mt-16 pt-8 border-t border-white/10 text-center text-sm">
           <p>&copy; {new Date().getFullYear()} C² | The Carbon Credit Marketplace. All Rights Reserved.</p>
+        </div>
+      </div>
+      
+      {/* Incubator Banner at the very bottom */}
+      <div className="bg-brand-stone/50">
+        <div className="container mx-auto px-6 py-3">
+          <Link 
+            href="https://riidl.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center text-center text-brand-light group"
+          >
+            <Rocket size={16} className="mr-3 text-brand-accent group-hover:scale-110 transition-transform" />
+            <span className="font-semibold text-sm">
+              Proudly incubated at <span className="font-bold underline group-hover:text-brand-accent transition-colors">riidl</span>
+            </span>
+          </Link>
         </div>
       </div>
     </footer>
