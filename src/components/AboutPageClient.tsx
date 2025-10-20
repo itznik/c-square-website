@@ -1,11 +1,10 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import PageHeader from '@/components/ui/PageHeader';
-import TextLayout from '@/components/ui/TextLayout';
+import PageHeader from '@/components/ui/PageHeader'; // We'll need to create a dark-themed version of this
+import TextLayout from '@/components/ui/TextLayout';   // and this
 import LinkedInPostCard from '@/components/ui/LinkedInPostCard';
 
-// Define the type for the props this component will receive
 interface LinkedInPost {
   _id: string;
   postText: string;
@@ -18,21 +17,35 @@ interface AboutPageClientProps {
 
 const IllustrationPlaceholder = () => (
   <div className="relative w-80 h-80 lg:w-96 lg:h-96 flex items-center justify-center">
-    <div className="absolute w-full h-full bg-brand-accent-cream rounded-full blur-3xl opacity-60"></div>
-    <p className="z-10 text-brand-olive">[High-Quality SVG Illustration]</p>
+    <div className="absolute w-full h-full bg-brand-accent/10 rounded-full blur-3xl"></div>
+    <p className="z-10 text-brand-accent">[Animated SVG Illustration]</p>
   </div>
 );
 
-// This is the Client Component that uses framer-motion
 export default function AboutPageClient({ latestPosts }: AboutPageClientProps) {
   return (
-    <main>
-      <PageHeader
-        title="A Purpose-Driven Mission"
-        subtitle="We are building a transparent, equitable, and impactful carbon market to accelerate India's journey to Net Zero."
-      />
+    <div className="relative z-10">
+      {/* Page Header Glass Panel */}
+      <section className="py-24 md:py-32">
+        <div className="container mx-auto px-6 text-center">
+          <motion.div
+            className="bg-white/5 backdrop-blur-xl rounded-2xl p-8 md:p-12 border border-white/10"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+          >
+            <h1 className="text-4xl md:text-6xl font-extrabold text-white" style={{ fontFamily: "'Lora', serif", textShadow: '0 0 20px rgba(0, 255, 153, 0.3)' }}>
+              A Purpose-Driven Mission
+            </h1>
+            <p className="mt-4 text-lg text-brand-light/80 max-w-3xl mx-auto">
+              We are building a transparent, equitable, and impactful carbon market to accelerate India&apos;s journey to Net Zero.
+            </p>
+          </motion.div>
+        </div>
+      </section>
 
-      <section className="py-20 md:py-28">
+      {/* Story & Vision Sections */}
+      <section className="py-12 md:py-20">
         <TextLayout
           title="Our Story"
           illustration={<IllustrationPlaceholder />}
@@ -43,7 +56,7 @@ export default function AboutPageClient({ latestPosts }: AboutPageClientProps) {
         </TextLayout>
       </section>
       
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-12 md:py-20">
         <TextLayout
           title="Our Vision"
           illustration={<IllustrationPlaceholder />}
@@ -55,7 +68,8 @@ export default function AboutPageClient({ latestPosts }: AboutPageClientProps) {
         </TextLayout>
       </section>
 
-      <section className="py-20 md:py-32 bg-background-light">
+      {/* Latest Insights Section */}
+      <section className="py-24 md:py-32">
         <div className="container mx-auto px-6">
           <motion.div
             className="text-center mb-16"
@@ -64,10 +78,10 @@ export default function AboutPageClient({ latestPosts }: AboutPageClientProps) {
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.7 }}
           >
-            <h2 className="text-4xl md:text-5xl font-extrabold text-brand-deep-green" style={{ fontFamily: "'Lora', serif" }}>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-white" style={{ fontFamily: "'Lora', serif", textShadow: '0 0 20px rgba(0, 255, 153, 0.3)' }}>
               Latest Insights & Updates
             </h2>
-            <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="mt-4 text-lg text-brand-light/80 max-w-3xl mx-auto">
               Follow our journey and discover the latest developments in India&apos;s carbon market.
             </p>
           </motion.div>
@@ -79,6 +93,6 @@ export default function AboutPageClient({ latestPosts }: AboutPageClientProps) {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
