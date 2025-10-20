@@ -12,6 +12,11 @@
   --brand-accent-dark: #00cc7a;
 }
 
+.mask-image-gradient {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+}
+
 body {
   background-color: var(--brand-dark);
   color: var(--brand-light);
