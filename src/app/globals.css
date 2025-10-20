@@ -31,22 +31,21 @@ body {
 /*
 ==============================================
 The Reusable .glass-pane Component with Fallback
-(Adapted from the development blueprint)
 ==============================================
 */
 .glass-pane {
   /* --- Fallback for Firefox and other non-supporting browsers --- */
-  background-color: rgba(30, 38, 51, 0.9); /* More opaque for readability */ [cite: 164, 152]
-  border: 1px solid rgba(255, 255, 255, 0.1); [cite: 165]
-  border-radius: 16px; [cite: 166]
+  background-color: rgba(30, 38, 51, 0.9); /* More opaque for readability */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 /* --- Progressive enhancement for supporting browsers --- */
-@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) { [cite: 168]
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .glass-pane {
-    background-color: rgba(30, 38, 51, 0.6); /* Use the intended transparency */ [cite: 170]
-    -webkit-backdrop-filter: blur(12px); /* Support for Safari */ [cite: 170]
-    backdrop-filter: blur(12px); /* The core of the effect */ [cite: 171]
+    background-color: rgba(30, 38, 51, 0.6); /* Use the intended transparency */
+    -webkit-backdrop-filter: blur(12px); /* Support for Safari */
+    backdrop-filter: blur(12px); /* The core of the effect */
   }
-                                                                     }
+}
