@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import PageHeader from '@/components/ui/PageHeader'; // We'll need to create a dark-themed version of this
+ // We'll need to create a dark-themed version of this
 import TextLayout from '@/components/ui/TextLayout';   // and this
 import LinkedInPostCard from '@/components/ui/LinkedInPostCard';
 
