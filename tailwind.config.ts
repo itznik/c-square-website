@@ -8,7 +8,6 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      // The high-end dark theme color palette
       colors: {
         'brand-dark': '#0a0a0a',
         'brand-charcoal': '#1a1a1a',
@@ -19,7 +18,6 @@ const config: Config = {
         'brand-deep-green': '#38423B',
         'brand-accent-cream': '#EAE9E4',
       },
-      // Connect the font variables from layout.tsx
       fontFamily: {
         sans: ['var(--font-inter)'],
         serif: ['var(--font-lora)'],
