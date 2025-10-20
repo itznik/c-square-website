@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
-// Correctly import the necessary fonts
 import { Inter, Lora } from 'next/font/google';
-import './globals.css'; // This line imports all your styling
+import './globals.css'; // This line imports all your styling.
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
@@ -19,7 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${inter.variable} ${lora.variable}`}>
       <body>
-        {/* The Header and Footer are removed to simplify and ensure the main content renders */}
+        {/* We will add the Header and Footer back after confirming the main content styles are fixed. */}
         {children}
       </body>
     </html>
