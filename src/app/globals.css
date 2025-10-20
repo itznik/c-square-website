@@ -22,3 +22,15 @@ body {
   color: var(--brand-light);
   font-family: 'Inter', sans-serif;
 }
+
+.gradient-background {
+  background: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand-charcoal) 50%, var(--brand-deep-green) 100%);
+  background-size: 200% 200%;
+  animation: gradient-flow 15s ease infinite;
+}
+
+@keyframes gradient-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
