@@ -27,25 +27,3 @@ body {
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
-
-/*
-==============================================
-The Reusable .glass-pane Component with Fallback
-==============================================
-*/
-.glass-pane {
-  /* --- Fallback for Firefox and other non-supporting browsers --- */
-  background-color: rgba(30, 38, 51, 0.9); /* More opaque for readability */
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-}
-
-/* --- Progressive enhancement for supporting browsers --- */
-@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-  .glass-pane {
-    background-color: rgba(30, 38, 51, 0.6); /* Use the intended transparency */
-    -webkit-backdrop-filter: blur(12px); /* Support for Safari */
-    backdrop-filter: blur(12px); /* The core of the effect */
-  }
-}
